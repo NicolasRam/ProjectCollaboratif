@@ -4,45 +4,40 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the etudiant database table.
  * 
  */
 @Entity
-@NamedQuery(name="Etudiant.findAll", query="SELECT e FROM Etudiant e")
-public class Etudiant implements Serializable {
+@PrimaryKeyJoinColumn(name = "id_etudiant")
+@DiscriminatorValue("e")
+@MappedSuperclass
+@NamedQuery(name = "Etudiant.findAll", query = "SELECT e FROM Etudiant e")
+public class Etudiant extends Personne implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_etudiant")
+	// @Id
+	// @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id_etudiant")
 	private int idEtudiant;
 
-	//bi-directional many-to-one association to Equipe
-	@OneToMany(mappedBy="etudiant")
+	// bi-directional many-to-one association to Equipe
+	@OneToMany(mappedBy = "etudiant")
 	private List<Equipe> equipes1;
 
-	//bi-directional one-to-one association to Personne
+	// bi-directional one-to-one association to Personne
 	@OneToOne
-	@JoinColumn(name="id_etudiant")
+	@JoinColumn(name = "id_etudiant", insertable = false, updatable = false, referencedColumnName = "id_personne")
 	private Personne personne;
 
-	//bi-directional many-to-many association to Equipe
+	// bi-directional many-to-many association to Equipe
 	@ManyToMany
-	@JoinTable(
-		name="membre_equipe"
-		, joinColumns={
-			@JoinColumn(name="id_personne")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="id_equipe")
-			}
-		)
+	@JoinTable(name = "membre_equipe", joinColumns = { @JoinColumn(name = "id_personne") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_equipe") })
 	private List<Equipe> equipes2;
 
-	//bi-directional many-to-many association to SessionFormation
-	@ManyToMany(mappedBy="etudiants")
+	// bi-directional many-to-many association to SessionFormation
+	@ManyToMany(mappedBy = "etudiants")
 	private List<SessionFormation> sessionFormations;
 
 	public Etudiant() {

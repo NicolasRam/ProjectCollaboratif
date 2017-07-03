@@ -3,24 +3,26 @@ package modele;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
 /**
  * The persistent class for the personne database table.
  * 
  */
 @Entity
-@NamedQuery(name="Personne.findAll", query="SELECT p FROM Personne p")
+@Table(name = "personne")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "type")
+@NamedQuery(name = "Personne.findAll", query = "SELECT p FROM Personne p")
 public class Personne implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_personne")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_personne")
 	private int idPersonne;
 
 	private String email;
 
-	@Column(name="mot_de_passe")
+	@Column(name = "mot_de_passe")
 	private String motDePasse;
 
 	private String nom;
@@ -31,12 +33,12 @@ public class Personne implements Serializable {
 
 	private String type;
 
-	//bi-directional one-to-one association to Etudiant
-	@OneToOne(mappedBy="personne")
+	// bi-directional one-to-one association to Etudiant
+	@OneToOne(mappedBy = "personne")
 	private Etudiant etudiant;
 
-	//bi-directional one-to-one association to Formateur
-	@OneToOne(mappedBy="personne")
+	// bi-directional one-to-one association to Formateur
+	@OneToOne(mappedBy = "personne")
 	private Formateur formateur;
 
 	public Personne() {

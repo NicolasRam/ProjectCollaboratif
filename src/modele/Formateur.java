@@ -4,28 +4,30 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the formateur database table.
  * 
  */
 @Entity
-@NamedQuery(name="Formateur.findAll", query="SELECT f FROM Formateur f")
-public class Formateur implements Serializable {
+@PrimaryKeyJoinColumn(name = "id_formateur")
+@DiscriminatorValue("f")
+@MappedSuperclass
+@NamedQuery(name = "Formateur.findAll", query = "SELECT f FROM Formateur f")
+public class Formateur extends Personne implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_formateur")
+	// @Id
+	// @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id_formateur")
 	private int idFormateur;
 
-	//bi-directional one-to-one association to Personne
+	// bi-directional one-to-one association to Personne
 	@OneToOne
-	@JoinColumn(name="id_formateur")
+	@JoinColumn(name = "id_formateur", insertable = false, updatable = false, referencedColumnName = "id_personne")
 	private Personne personne;
 
-	//bi-directional many-to-one association to Projet
-	@OneToMany(mappedBy="formateur")
+	// bi-directional many-to-one association to Projet
+	@OneToMany(mappedBy = "formateur")
 	private List<Projet> projets;
 
 	public Formateur() {
