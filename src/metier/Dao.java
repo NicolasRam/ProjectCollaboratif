@@ -18,7 +18,7 @@ public class Dao {
 	private EntityManager em;
 
 	public Dao() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProjectENS");
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProjectCollaboratif");
 		em = factory.createEntityManager();
 	}
 

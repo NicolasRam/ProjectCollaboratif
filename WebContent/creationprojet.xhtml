@@ -10,6 +10,10 @@
 	<ui:define name="content">
 		<h:form name="Formulaire de connexion">
 			<table>
+			<tr>
+			<td>Formateur : </td>
+			<td><h:outputText value="#{loginBeanProjet.nom}" /></td>
+			</tr>
 				<tr>
 					<td>Titre :</td>
 					<td><h:inputText value="#{loginBeanProjet.leProjet.titre}"
@@ -31,7 +35,7 @@
 				</tr>
 			</table>
 			<p>
-				<h:commandButton value="Connexion"
+				<h:commandButton value="Créer le projet"
 					action="#{loginBeanProjet.creerProjet}" />
 			</p>
 		</h:form>
