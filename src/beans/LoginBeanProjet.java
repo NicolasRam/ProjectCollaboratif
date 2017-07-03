@@ -28,7 +28,7 @@ public class LoginBeanProjet {
 		dao = new Dao();
 		setLesSessions(dao.getLesSessions());
 		setListeProjets(dao.getProjets());
-		// leProjet = new Projet();
+		//leProjet = new Projet();
 		sessionFormation = new SessionFormation();
 		// formateur = new Formateur();
 	}

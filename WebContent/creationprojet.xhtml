@@ -21,11 +21,11 @@
 							required="true" id="mdp" /> <h:message for="mdp" /></td>
 				</tr>
 				<tr>
-					<td>Session :</td>
+					<td>Choix de la session :</td>
 					<td><h:selectOneMenu
 							value="#{loginBeanProjet.sessionFormation}">
 							<f:selectItems value="#{loginBeanProjet.lesSessions}" var="c"
-								itemLabel="#{c.idSessionFormation}"
+								itemLabel="Session #{c.idSessionFormation}"
 								itemValue="#{c.idSessionFormation}" />
 						</h:selectOneMenu></td>
 				</tr>
