@@ -10,10 +10,10 @@
 	<ui:define name="content">
 		<h:form name="Formulaire de connexion">
 			<table>
-			<tr>
-			<td>Formateur : </td>
-			<td><h:outputText value="#{loginBeanProjet.nom}" /></td>
-			</tr>
+				<tr>
+					<td>Formateur :</td>
+					<td><h:outputText value="#{loginBeanProjet.nom}" /></td>
+				</tr>
 				<tr>
 					<td>Titre :</td>
 					<td><h:inputText value="#{loginBeanProjet.leProjet.titre}"
@@ -26,11 +26,17 @@
 				</tr>
 				<tr>
 					<td>Choix de la session :</td>
-					<td><h:selectOneMenu
+					<!--<td><h:selectOneMenu
 							value="#{loginBeanProjet.sessionFormation}">
 							<f:selectItems value="#{loginBeanProjet.lesSessions}" var="c"
 								itemLabel="Session #{c.idSessionFormation}"
 								itemValue="#{c.idSessionFormation}" />
+						</h:selectOneMenu></td>-->
+					<td><h:selectOneMenu
+							value="#{loginBeanProjet.sessionFormation}" converter="sessionFormationConverter">
+							<f:selectItems value="#{loginBeanProjet.lesSessions}" var="c"
+								itemLabel="Session #{c.idSessionFormation}"
+								itemValue="#{c}" />
 						</h:selectOneMenu></td>
 				</tr>
 			</table>

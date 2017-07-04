@@ -17,7 +17,8 @@ public class SessionFormation implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_session_formation")
-	private int idSessionFormation;
+	//private int idSessionFormation;
+	private Integer idSessionFormation;
 
 	// bi-directional many-to-many association to Etudiant
 	@ManyToMany
@@ -32,11 +33,20 @@ public class SessionFormation implements Serializable {
 	public SessionFormation() {
 	}
 
+	/*
 	public int getIdSessionFormation() {
 		return this.idSessionFormation;
 	}
 
 	public void setIdSessionFormation(int idSessionFormation) {
+		this.idSessionFormation = idSessionFormation;
+	}
+	*/
+	public Integer getIdSessionFormation() {
+		return this.idSessionFormation;
+	}
+
+	public void setIdSessionFormation(Integer idSessionFormation) {
 		this.idSessionFormation = idSessionFormation;
 	}
 
