@@ -64,7 +64,10 @@ public class LoginBeanProjet {
 	public String creerProjet() {
 		System.out.println("Session n° " + sessionFormation.getIdSessionFormation() + ", Sujet du projet : "
 				+ leProjet.getSujet());
-		dao.creerProjet(leProjet, formateur, sessionFormation);
+		for(SessionFormation s : lesSessions){
+			if(s.getIdSessionFormation() == sessionFormation.getIdSessionFormation())
+				dao.creerProjet(leProjet, formateur, s);
+		}
 		return "succescreationprojet";
 	}
 
