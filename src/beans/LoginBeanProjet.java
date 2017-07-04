@@ -28,7 +28,7 @@ public class LoginBeanProjet {
 		dao = new Dao();
 		setLesSessions(dao.getLesSessions());
 		setListeProjets(dao.getProjets());
-		//leProjet = new Projet();
+		// leProjet = new Projet();
 		sessionFormation = new SessionFormation();
 		// formateur = new Formateur();
 	}
@@ -53,10 +53,9 @@ public class LoginBeanProjet {
 				return "inconnu";
 		} else {
 			setEtudiant(dao.verifierEtudiant(nom, mdp));
-			if(etudiant != null){
+			if (etudiant != null) {
 				return "accueiletudiant";
-			}
-			else
+			} else
 				return "inconnu";
 		}
 	}
@@ -64,11 +63,13 @@ public class LoginBeanProjet {
 	public String creerProjet() {
 		System.out.println("Session n° " + sessionFormation.getIdSessionFormation() + ", Sujet du projet : "
 				+ leProjet.getSujet());
-		for(SessionFormation s : lesSessions){
-			if(s.getIdSessionFormation() == sessionFormation.getIdSessionFormation())
+		for (SessionFormation s : lesSessions) {
+			if (s.getIdSessionFormation() == sessionFormation.getIdSessionFormation()) {
 				dao.creerProjet(leProjet, formateur, s);
+				return "succescreationprojet";
+			}
 		}
-		return "succescreationprojet";
+		return "pasbon";
 	}
 
 	/// Getters and setters pour un projet
@@ -97,7 +98,7 @@ public class LoginBeanProjet {
 	public void setFormateur(Formateur formateur) {
 		this.formateur = formateur;
 	}
-	
+
 	public Etudiant getEtudiant() {
 		return etudiant;
 	}
@@ -105,7 +106,7 @@ public class LoginBeanProjet {
 	public void setEtudiant(Etudiant etudiant) {
 		this.etudiant = etudiant;
 	}
-	
+
 	public String getNom() {
 		return nom;
 	}
@@ -156,5 +157,16 @@ public class LoginBeanProjet {
 	public void setType(String type) {
 		this.type = type;
 	}
-}
 
+	public SessionFormation getSessionConverter(Integer id) {
+		if (id == null) {
+			throw new IllegalArgumentException("no id provided");
+		}
+		for (SessionFormation session : lesSessions) {
+			if (id.equals(session.getIdSessionFormation())) {
+				return session;
+			}
+		}
+		return null;
+	}
+}
