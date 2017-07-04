@@ -68,23 +68,6 @@ public class Dao {
 		return liste;
 	}
 
-	/*
-	 * public Formateur verifierFormateur(String nom, String mdp){ //String
-	 * requete =
-	 * "SELECT g FROM Formateur g JOIN g.personne p ON g.id_formateur = p.id_personne AND g.nom = '"
-	 * + nom +"'"; //String requete = "SELECT g FROM Personne g WHERE g.nom = '"
-	 * + nom +"'"; String requete = "SELECT g FROM Formateur g WHERE g.nom = '"
-	 * + nom +"'"; Formateur i1 = null; TypedQuery<Formateur> query =
-	 * em.createQuery(requete, Formateur.class); if(query.getResultList().size()
-	 * != 0){ i1 = query.getSingleResult();
-	 * System.out.println("Formateur trouvé : " + i1.getNom()); requete +=
-	 * " AND g.mot_de_passe = '"+ mdp +"'"; TypedQuery<Personne> query1 =
-	 * em.createQuery(requete, Personne.class); if(query1.getResultList().size()
-	 * != 0){ System.out.println("Mot de passe ok"); return
-	 * query.getSingleResult(); } else{ System.out.println("Mot de passe faux");
-	 * return null; } } else{ System.out.println("Personne inconnue"); return
-	 * null; } }
-	 */
 	public Formateur verifierFormateur(String nom, String mdp) {
 		//String requetePersonne = "SELECT g FROM Personne g WHERE g.nom = '" + nom + "' AND g.mot_de_passe = '" + mdp + "'";
 		String requetePersonne = "SELECT g FROM Personne g WHERE g.nom = '"+nom+ "' AND g.motDePasse = '" + mdp + "'";

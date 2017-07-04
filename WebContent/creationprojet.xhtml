@@ -25,13 +25,6 @@
 							required="true" id="mdp" /> <h:message for="mdp" /></td>
 				</tr>
 				<tr>
-					<td>Choix de la session :</td>
-					<!--<td><h:selectOneMenu
-							value="#{loginBeanProjet.sessionFormation}">
-							<f:selectItems value="#{loginBeanProjet.lesSessions}" var="c"
-								itemLabel="Session #{c.idSessionFormation}"
-								itemValue="#{c.idSessionFormation}" />
-						</h:selectOneMenu></td>-->
 					<td><h:selectOneMenu
 							value="#{loginBeanProjet.sessionFormation}" converter="sessionFormationConverter">
 							<f:selectItems value="#{loginBeanProjet.lesSessions}" var="c"
