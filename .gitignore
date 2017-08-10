@@ -9,3 +9,4 @@ WebContent/WEB-INF/modeles/modele.xhtml
 src/beans/LoginBeanProjet.java
 src/metier/Dao.java
 WebContent/accueiletudiant.xhtml
+META-INF/persistence.xml
