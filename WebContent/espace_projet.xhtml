@@ -6,10 +6,18 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+<h:head>
+	<h:outputStylesheet name="style.css" />
+	<title><ui:insert name="title">Espace projet</ui:insert></title>
+</h:head>
+
 <ui:composition template="WEB-INF/modeles/modele.xhtml">
 	<ui:define name="content">
-	    Félicitations, le projet <h:outputText value="#{loginBeanProjet.leProjet.titre}" /> a bien été ajouté
-	    pour le formateur <h:outputText value="#{loginBeanProjet.nom}" />
+	    <p>Détails du projet affichés ici</p>
+	    <p>J'ai pensé</p>
+	    
+	    <p><h:link outcome="espace_equipe.xhtml" value="Accès à l'espace d'une des équipes du projet" /></p>
+	    <p><h:link outcome="espace_etudiant.xhtml" value="Accès à l'espace d'un des étudiants du projet" /></p>
 	</ui:define>
 </ui:composition>
 </html>

@@ -8,12 +8,18 @@
 	
 <h:head>
 	<h:outputStylesheet name="style.css" />
-	<title><ui:insert name="title">Erreur de connexion</ui:insert></title>
+	<title><ui:insert name="title">Accueil formateur</ui:insert></title>
 </h:head>
 
 <ui:composition template="WEB-INF/modeles/modele.xhtml">
 	<ui:define name="content">
-	    Personne inconnue et/ou mot de passe incorrect.
+	    <h3>Bienvenue dans l'espace formateur !</h3>
+	    
+	    <p>Liste des projets déjà crées à afficher ici</p>
+	    <p><h:link outcome="espace_projet.xhtml" value="Lien vers la page d'un projet (il n'y a qu'une seule page cible,
+	    que l'on remplira en fonction du projet sélectionné)" /></p>
+	    
+	    <h:link outcome="creation_projet.xhtml" value="Créer un nouveau projet" />
 	</ui:define>
 </ui:composition>
 </html>

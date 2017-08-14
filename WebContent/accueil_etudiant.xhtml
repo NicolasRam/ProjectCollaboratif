@@ -6,9 +6,18 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+<h:head>
+	<h:outputStylesheet name="style.css" />
+	<title><ui:insert name="title">Accueil étudiant</ui:insert></title>
+</h:head>
+
 <ui:composition template="WEB-INF/modeles/modele.xhtml">
 	<ui:define name="content">
-	    Bienvenue dans l'espace étudiant !
+	    <h3>Bienvenue dans l'espace étudiant !</h3>
+	    
+	    <p>Afficher ici les projets auxquels particpe l'étudiant</p>
+	    
+	    <p><h:link outcome="espace_etudiant.xhtml" value="Accéder au profil" /></p>
 	</ui:define>
 </ui:composition>
 </html>

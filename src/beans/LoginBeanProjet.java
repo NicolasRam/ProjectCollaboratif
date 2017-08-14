@@ -48,16 +48,22 @@ public class LoginBeanProjet {
 			if (formateur != null) {
 				listeProjets = dao.getProjetsParFormateur(formateur);
 				leProjet = new Projet();
-				return "creationprojet";
+				return "accueil_formateur";
 			} else
 				return "inconnu";
 		} else {
 			setEtudiant(dao.verifierEtudiant(nom, mdp));
 			if (etudiant != null) {
-				return "accueiletudiant";
+				return "accueil_etudiant";
 			} else
 				return "inconnu";
 		}
+	}
+	
+	// Pour le moment, retourne directement à l'accueil après l'enregistrement
+	// Il faut voir comment on gère l'histoire du mail et de la validation
+	public String enregistrementEtudiant(){
+		return "accueil";
 	}
 
 	public String creerProjet() {
@@ -66,10 +72,10 @@ public class LoginBeanProjet {
 		for (SessionFormation s : lesSessions) {
 			if (s.getIdSessionFormation() == sessionFormation.getIdSessionFormation()) {
 				dao.creerProjet(leProjet, formateur, s);
-				return "succescreationprojet";
+				return "succes_creation_projet";
 			}
 		}
-		return "pasbon";
+		return "erreur_creation_projet";
 	}
 
 	/// Getters and setters pour un projet

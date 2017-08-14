@@ -8,12 +8,15 @@
 	
 <h:head>
 	<h:outputStylesheet name="style.css" />
-	<title><ui:insert name="title">Erreur de connexion</ui:insert></title>
+	<title><ui:insert name="title">Projet crée</ui:insert></title>
 </h:head>
 
 <ui:composition template="WEB-INF/modeles/modele.xhtml">
 	<ui:define name="content">
-	    Personne inconnue et/ou mot de passe incorrect.
+	    <p>Félicitations, le projet <h:outputText value="#{loginBeanProjet.leProjet.titre}" /> a bien été ajouté
+	    pour le formateur <h:outputText value="#{loginBeanProjet.nom}" /></p>
+	    
+	    <p><h:link outcome="accueil_formateur.xhtml" value="Retour à l'accueil formateur" /></p>
 	</ui:define>
 </ui:composition>
 </html>

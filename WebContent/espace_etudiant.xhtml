@@ -5,15 +5,17 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-	
+
 <h:head>
 	<h:outputStylesheet name="style.css" />
-	<title><ui:insert name="title">Erreur de connexion</ui:insert></title>
+	<title><ui:insert name="title">Espace étudiant</ui:insert></title>
 </h:head>
 
 <ui:composition template="WEB-INF/modeles/modele.xhtml">
 	<ui:define name="content">
-	    Personne inconnue et/ou mot de passe incorrect.
+	    <p>Profil étudiant</p>
+	    
+	    <p><h:link outcome="accueil_etudiant.xhtml" value="Retour à l'accueil étudiant" /></p>
 	</ui:define>
 </ui:composition>
 </html>

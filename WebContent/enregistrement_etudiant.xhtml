@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+<h:head>
+	<h:outputStylesheet name="style.css" />
+	<title><ui:insert name="title">Enregistrement</ui:insert></title>
+</h:head>
+
+<ui:composition template="WEB-INF/modeles/modele.xhtml">
+	<ui:define name="content">
+	    <h:form name="Formulaire d'enregistrement">
+	    	<table>
+	    		<tr>
+					<td>Nom :</td>
+					<td><h:inputText required="true" id="nom" /> <h:message for="nom" /></td>
+				</tr>
+				<tr>
+					<td>Prénom :</td>
+					<td><h:inputText required="true" id="prenom" /> <h:message for="prenom" /></td>
+				</tr>
+				<tr>
+					<td>Adresse :</td>
+					<td><h:inputText required="true" id="adresse" /> <h:message for="adresse" /></td>
+				</tr>
+				<tr>
+					<td>Code postal :</td>
+					<td><h:inputText required="true" id="codePostal" /> <h:message for="codePostal" /></td>
+				</tr>
+				<tr>
+					<td>Ville :</td>
+					<td><h:inputText required="true" id="ville" /> <h:message for="ville" /></td>
+				</tr>
+				<tr>
+					<td>Téléphone fixe :</td>
+					<td><h:inputText required="true" id="fixe" /> <h:message for="fixe" /></td>
+				</tr>
+				<tr>
+					<td>Téléphone mobile :</td>
+					<td><h:inputText required="true" id="mobile" /> <h:message for="mobile" /></td>
+				</tr>
+				<tr>
+					<td>Email :</td>
+					<td><h:inputText required="true" id="email" /> <h:message for="email" /></td>
+				</tr>
+				<tr>
+					<td>Confirmation email :</td>
+					<td><h:inputText required="true" id="confirmationEmail" /> <h:message for="confirmationEmail" /></td>
+				</tr>
+				<tr>
+					<td>Entrez votre mot de passe :</td>
+					<td><h:inputText required="true" id="mdp" /> <h:message for="mdp" /></td>
+				</tr>
+				<tr>
+					<td>Confirmation mot de passe :</td>
+					<td><h:inputText required="true" id="confirmationMdp" /> <h:message for="confirmationMdp" /></td>
+				</tr>
+			</table>
+			<p>
+				<h:commandButton value="S'enregistrer"
+					action="#{loginBeanProjet.enregistrementEtudiant}" />
+			</p>
+	    </h:form>
+	</ui:define>
+</ui:composition>
+</html>
