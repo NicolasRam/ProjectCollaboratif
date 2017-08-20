@@ -48,6 +48,14 @@ public class Projet implements Serializable {
 
 	public Projet() {
 	}
+	
+	public Projet(String titre, String sujet, Formateur proprietaire, SessionFormation session, List<Equipe> equipes) {
+		this.titre = titre;
+		this.sujet = sujet;
+		this.formateur = proprietaire;
+		this.sessionFormation = session;
+		this.equipes = equipes;
+	}
 
 	public int getIdProjet() {
 		return this.idProjet;

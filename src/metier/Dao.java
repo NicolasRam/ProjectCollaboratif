@@ -115,5 +115,24 @@ public class Dao {
 			return null;
 		}
 	}
+	
+	//On vérifier si la personne n'est pas déjà présente en BDD (via le nom et l'email)
+	public boolean presencePersonne(String nom, String email){
+		String requetePersonne = "SELECT p FROM Personne p WHERE p.nom = '" + nom 
+				+ "' OR p.email = '" + email + "'";
+		TypedQuery<Personne> queryPersonne = em.createQuery(requetePersonne, Personne.class);
+		if(queryPersonne.getResultList().size() != 0){
+			return true;
+		}
+		return false;
+	}
+	
+	//On enregistre la personne
+	public boolean creerPersonne(Personne personne){
+		em.getTransaction().begin();
+		em.persist(personne);
+		em.getTransaction().commit();
+		return true;
+	}
 }
 

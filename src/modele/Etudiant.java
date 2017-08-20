@@ -43,6 +43,11 @@ public class Etudiant extends Personne implements Serializable {
 	public Etudiant() {
 	}
 
+	//Pour créer notre nouvel Étudiant
+	public Etudiant(String nom, String prenom, String tel, String email, String mdp, String type) {
+		super(nom, prenom, tel, email, mdp, type);
+	}
+	
 	public int getIdEtudiant() {
 		return this.idEtudiant;
 	}

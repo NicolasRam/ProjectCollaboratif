@@ -13,11 +13,36 @@
 
 <ui:composition template="WEB-INF/modeles/modele.xhtml">
 	<ui:define name="content">
-	    <p>Détails du projet affichés ici</p>
-	    <p>J'ai pensé</p>
-	    
-	    <p><h:link outcome="espace_equipe.xhtml" value="Accès à l'espace d'une des équipes du projet" /></p>
-	    <p><h:link outcome="espace_etudiant.xhtml" value="Accès à l'espace d'un des étudiants du projet" /></p>
+		<table>
+			<tr>
+				<td>Titre :</td>
+				<td><h:outputText value="#{loginBeanProjet.leProjet.titre}" /></td>
+			</tr>
+			<tr>
+				<td>Sujet :</td>
+				<td><h:inputText value="#{loginBeanProjet.titre}"
+						required="true" id="prenom" /> <h:message for="prenom" /></td>
+			</tr>
+			<tr>
+				<td>Téléphone mobile :</td>
+				<td><h:inputText value="#{loginBeanProjet.tel}" required="true"
+						id="tel" /> <h:message for="tel" /></td>
+			</tr>
+			<tr>
+				<td>Email :</td>
+				<td><h:inputText value="#{loginBeanProjet.email}"
+						required="true" id="email" /> <h:message for="email" /></td>
+			</tr>
+		</table>
+
+		<p>
+			<h:link outcome="espace_equipe.xhtml"
+				value="Accès à l'espace d'une des équipes du projet" />
+		</p>
+		<p>
+			<h:link outcome="espace_etudiant.xhtml"
+				value="Accès à l'espace d'un des étudiants du projet" />
+		</p>
 	</ui:define>
 </ui:composition>
 </html>

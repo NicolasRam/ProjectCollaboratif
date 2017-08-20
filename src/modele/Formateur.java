@@ -32,6 +32,11 @@ public class Formateur extends Personne implements Serializable {
 
 	public Formateur() {
 	}
+	
+	//Pour créer notre nouveau Formateur
+	public Formateur(String nom, String prenom, String tel, String email, String mdp, String type) {
+		super(nom, prenom, tel, email, mdp, type);
+	}
 
 	public int getIdFormateur() {
 		return this.idFormateur;
