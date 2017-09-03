@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <h:head>
 	<h:outputStylesheet name="style.css" />
@@ -13,11 +14,23 @@
 
 <ui:composition template="WEB-INF/modeles/modele.xhtml">
 	<ui:define name="content">
-	    <h3>Bienvenue dans l'espace étudiant !</h3>
-	    
-	    <p>Afficher ici les projets auxquels particpe l'étudiant</p>
-	    
-	    <p><h:link outcome="espace_etudiant.xhtml" value="Accéder au profil" /></p>
+		<h3>Bienvenue dans l'espace étudiant !</h3>
+
+		<p>Liste des équipes :</p>
+		<!-- Boucle qui parcoure tous les projets et affiche sous forme de lien le projet avec son titre -->
+
+		<c:forEach var="equipe" items="#{loginBeanProjet.listeEquipes}">
+			<h:form>
+				<h:commandLink action="#{loginBeanProjet.returnEquipe}"
+					value="#{equipe.idEquipe}" id="idEquipe">
+					<f:param name="idEquipe" value="#{loginBeanProjet.lEquipe.idEquipe}" />
+				</h:commandLink>
+				<br />
+			</h:form>
+		</c:forEach>
+
+		<h:link outcome="creation_equipe.xhtml"
+			value="Créer une nouvelle équipe" />
 	</ui:define>
 </ui:composition>
 </html>

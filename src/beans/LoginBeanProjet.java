@@ -3,6 +3,7 @@ package beans;
 import java.util.List;
 
 import metier.Dao;
+import modele.Equipe;
 import modele.Etudiant;
 import modele.Formateur;
 import modele.Personne;
@@ -31,6 +32,9 @@ public class LoginBeanProjet {
 
 	private List<Projet> listeProjets;
 	private Projet leProjet;
+	
+	private List<Equipe> listeEquipes;
+	private Equipe lEquipe;
 
 	private List<SessionFormation> lesSessions;
 	private SessionFormation sessionFormation;
@@ -40,6 +44,7 @@ public class LoginBeanProjet {
 		dao = new Dao();
 		setLesSessions(dao.getLesSessions());
 		setListeProjets(dao.getProjets());
+		setListeEquipes(dao.getEquipes());
 		sessionFormation = new SessionFormation();
 		leProjet = new Projet();
 	}
@@ -55,6 +60,7 @@ public class LoginBeanProjet {
 		} else {
 			setEtudiant(dao.verifierEtudiant(nom, mdp));
 			if (etudiant != null) {
+				listeEquipes = dao.getEquipesParEtudiant(etudiant);
 				return "accueil_etudiant";
 			} else
 				return "inconnu";
@@ -79,12 +85,14 @@ public class LoginBeanProjet {
 			formateur = new Formateur(nom, prenom, tel, email, mdp, "f");
 			dao.creerPersonne(formateur);
 			System.out.println("Bienvenue nouveau formateur !!!");
+			listeProjets = dao.getProjetsParFormateur(formateur);
 			return "accueil_formateur";
 		}
 		if (type.equals("etudiant")) {
 			etudiant = new Etudiant(nom, prenom, tel, email, mdp, "e");
 			dao.creerPersonne(etudiant);
 			System.out.println("Bienvenue nouvel étudiant !!!");
+			listeEquipes = dao.getEquipesParEtudiant(etudiant);
 			return "accueil_etudiant";
 		}
 		return "accueil";
@@ -245,6 +253,22 @@ public class LoginBeanProjet {
 		this.titre = titre;
 	}
 	
+	public List<Equipe> getListeEquipes() {
+		return listeEquipes;
+	}
+
+	public void setListeEquipes(List<Equipe> listeEquipes) {
+		this.listeEquipes = listeEquipes;
+	}
+	
+	public Equipe getlEquipe() {
+		return lEquipe;
+	}
+
+	public void setlEquipe(Equipe lEquipe) {
+		this.lEquipe = lEquipe;
+	}
+	
 	public SessionFormation getSessionConverter(Integer id) {
 		if (id == null) {
 			throw new IllegalArgumentException("no id provided");
@@ -262,5 +286,10 @@ public class LoginBeanProjet {
 		//Le titre vaut toujours null, je n'arrive pas à le récupérer du commandLink
 		System.out.println(titre);
 		return "espace_projet";
+	}
+
+	public String returnEquipe() {
+		//Le titre vaut toujours null, je n'arrive pas à le récupérer du commandLink
+		return "espace_equipe";
 	}
 }

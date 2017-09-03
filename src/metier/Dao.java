@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import modele.Equipe;
 import modele.Etudiant;
 import modele.Formateur;
 import modele.Personne;
@@ -41,11 +42,28 @@ public class Dao {
 
 		return lesProjets;
 	}
+	
+	public List<Equipe> getEquipesParEtudiant(Etudiant etudiant) {
+		List<Equipe> lesEquipes = null;
+		Query q = em.createQuery("SELECT e FROM Equipe e WHERE e.etudiant = :var");
+		q.setParameter("var", etudiant);
+
+		lesEquipes = q.getResultList();
+
+		return lesEquipes;
+	}
 
 	public List<Projet> getProjets() {
 		String requete = "SELECT g FROM Projet g";
 		TypedQuery<Projet> query = em.createQuery(requete, Projet.class);
 		List<Projet> liste = query.getResultList();
+		return liste;
+	}
+	
+	public List<Equipe> getEquipes() {
+		String requete = "SELECT e FROM Equipe e";
+		TypedQuery<Equipe> query = em.createQuery(requete, Equipe.class);
+		List<Equipe> liste = query.getResultList();
 		return liste;
 	}
 
